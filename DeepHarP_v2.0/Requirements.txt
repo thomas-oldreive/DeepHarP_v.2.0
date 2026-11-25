@@ -1,0 +1,29 @@
+# DeepHarP v2.0 - Python requirements
+# Install with:  pip install -r Requirements.txt
+#
+# Tested with Python 3.7 and older
+#
+# Non-Python software (install separately; cannot be installed with pip):
+#   - NiftyReg (reg_aladin, reg_f3d, reg_resample) - required, must be on your PATH
+#     http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install
+#   - FSL BET - optional, only for skull stripping with provided pre-processing script
+#     https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET
+
+# --- Core pipeline (main.sh, Scripts/*.py) ---
+numpy<1.19
+scipy
+vtk
+
+# --- DeepMedic CNN (deepmedic-master) ---
+# The bundled DeepMedic code uses the TensorFlow 1.x API (tf.placeholder, tf.Session).
+# Use tensorflow 1.15 (supports Python 3.7 or older only),
+tensorflow==1.15.*
+protobuf<3.21
+nibabel<5
+six
+
+# --- Pre- and post-processing scripts ---
+SimpleITK==2.2.1
+
+# --- Optional: only for plotting training progress (deepmedic-master/plotTrainingProgress.py) ---
+# matplotlib
