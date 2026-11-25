@@ -1,7 +1,7 @@
 # DeepHarP_v.2.0
 This is an updated version of DeepHarP_Hippocampus git repo, originally developed by Samaneh Nobakht, et al. published at: https://github.com/snobakht/DeepHarP_Hippocampus. When using this tool please cite the original DeepHarP paper (doi: 10.3390/s2107242), as well as the DeepMedic paper (doi: 10.1016/j.media.2016.10.004)
 
-This is a hippocampal segmentation tool that replicates manual hand tracing with higher accuracy than other automated segementation tools (see original DeepHarP publication). Intended to be used with T1-weighted MRI brain scans.
+This is a hippocampal segmentation tool that replicates manual hand tracing with higher accuracy than other automated segementation tools (see original DeepHarP publication). Intended to be used with 1 mm isotropic T1-weighted MRI brain scans.
 
 Requirements:
 - Python 3.7 or older
