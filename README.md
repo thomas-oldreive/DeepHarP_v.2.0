@@ -1,12 +1,7 @@
 # DeepHarP_v.2.0
-This is an updated version of DeepHarP_Hippocampus git repo, originally developed by Samaneh Nobakht, et al. published at: https://github.com/snobakht/DeepHarP_Hippocampus. When using this tool please cite the original DeepHarP paper (doi: 10.3390/s2107242), as well as the original DeepMedic paper (doi: 10.1016/j.media.2016.10.004)
+This is an updated version of DeepHarP_Hippocampus git repo, originally developed by Samaneh Nobakht, et al. published at: https://github.com/snobakht/DeepHarP_Hippocampus. When using this tool please cite the original DeepHarP paper (doi: 10.3390/s2107242), as well as the DeepMedic paper (doi: 10.1016/j.media.2016.10.004)
 
-This is a hippocampal segmentation tool that replicates manual hand tracing with higher accuracy than other automated segementation tools (see original DeepHarP publication). Intended to be used with 1 mm isotropic T1-weighted MRI brain scans.
-
-Requirements:
-- Python 3.7 or older
-- Python packages: `pip install -r requirements.txt`
-- NifyReg (http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install)
+This is a hippocampal segmentation tool that replicates manual hand tracing with higher accuracy than other automated segementation tools (see original DeepHarP publication). Intended to be used with T1-weighted MRI brain scans.
 
 What's New in Version 2.0 (Updated fall 2026):
 1) Updated syntax to python 3 vs. original python 2
@@ -14,17 +9,20 @@ What's New in Version 2.0 (Updated fall 2026):
 3) New README.md and Requirements.txt documentation
 4) General cleaning and bug fixing
 
+Requirements:
+- Python 3.7
+- Python packages: `pip install -r Requirements.txt`
+- NifyReg (http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install)
+
 Usage:
-1. [OPTIONAL, but recommended]: Use pre-processing script at your discretion to prepare brains for segmentation (background removal, N2 bias field correction, and BET skull stripping)
-2. Place processed scans into the "Brains" folder
-4. In `Scripts/main.sh`, set `root_dir` to your DeepHarP installation folder
-5. In `Configurations/modelConfig.cfg`, set `folderForOutput` to your output folder inside `Predictions`.
-6. In `Configurations/testConfig.cfg`:
-   - set `folderForOutput` to the same output folder
-   - set `cnnModelFilePath` to the full path of the model. The model from the original paper is: `Configurations/trainSessionWithValidTiny/ASHCNN.trainSessionWithValidTiny.final.2019-09-15.20.32.16.829653.model.ckpt`.
-7. From the `Scripts` folder, run: `bash  source ./main.sh`
+1. Skull-strip your T1 scans; this is required. You can use the pre-processing script, which also applies N4 bias correction and a background threshold (turn the threshold off with `--threshold 0`):
+   `python Processing_Scripts/Pre_Processing_v.2.0.py --input <folder with raw scans> --out <output folder>`
+2. Place the skull-stripped scans (`.nii` or `.nii.gz`) in the `Brains` folder. It should contain only the scans you want to segment, so remove files from any earlier run first.
+3. In `Scripts/main.sh`, set `root_dir` to the folder that contains the `DeepHarp` folder.
+4. Optional: in `Configurations/testConfig.cfg`, change `sessionName` to name the output folder for this run (currently `Session_1`).
+5. Run: `bash Scripts/main.sh`
 
 Outputs:
-- Segmentations: `[output folder path]`
+- Segmentations: `predictions/<sessionName>/predictions`
 - Cropped hippocampal ROIs and intermediate registration scans: `Brains`
-- [OPTIONAL, but recommended]: Use post-processing script to remove non-hippocampal noise from segmentations.
+- [OPTIONAL, but recommended]: Use post-processing script to remove non-hippocampal noise from segmentations and save them to a new, clean location.
