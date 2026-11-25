@@ -7,7 +7,6 @@ Requirements:
 - Python 3.12+
 - Python packages: `pip install -r requirements.txt`
 - NifyReg (http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install)
-- DeepMedic (https://github.com/deepmedic/deepmedic?tab=readme-ov-file)
 
 What's New in Version 2.0 (Updated fall 2026):
 1) Updated syntax to python 3 vs. original python 2
