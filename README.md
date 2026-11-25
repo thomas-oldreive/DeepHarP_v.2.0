@@ -4,7 +4,7 @@ This is an updated version of DeepHarP_Hippocampus git repo, originally develope
 This is a hippocampal segmentation tool that replicates manual hand tracing with higher accuracy than other automated segementation tools (see original DeepHarP publication). Intended to be used with T1-weighted MRI brain scans.
 
 Requirements:
-- Python 3.12+
+- Python 3.7 or older
 - Python packages: `pip install -r requirements.txt`
 - NifyReg (http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install)
 
