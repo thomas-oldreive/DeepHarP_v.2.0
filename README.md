@@ -16,7 +16,7 @@ What's New in Version 2.0 (Updated fall 2026):
 4) General cleaning and bug fixing
 
 Usage:
-1. [OPTIONAL]: Use pre-processing script at your discretion to prepare brains for segmentation (background removal, N2 bias field correction, and BET skull stripping)
+1. [OPTIONAL, but recommended]: Use pre-processing script at your discretion to prepare brains for segmentation (background removal, N2 bias field correction, and BET skull stripping)
 2. Place processed scans into the "Brains" folder
 4. In `Scripts/main.sh`, set `root_dir` to your DeepHarP installation folder
 5. In `Configurations/modelConfig.cfg`, set `folderForOutput` to your output folder inside `Predictions`.
@@ -28,4 +28,4 @@ Usage:
 Outputs:
 - Segmentations: `[output folder path]`
 - Cropped hippocampal ROIs and intermediate registration scans: `Brains`
-- [OPTIONAL, but highly recommended]: Use post-processing script to remove non-hippocampal noise from segmentations.
+- [OPTIONAL, but recommended]: Use post-processing script to remove non-hippocampal noise from segmentations.
